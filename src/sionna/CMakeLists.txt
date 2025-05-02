@@ -5,22 +5,24 @@ endif()
 
 set(examples_as_tests_sources)
 if(${ENABLE_EXAMPLES})
-    set(examples_as_tests_sources    
+    set(examples_as_tests_sources
         examples/simple-sionna-example.cc
         )
-endif()    
+endif()
 
 build_lib(
     LIBNAME sionna
     SOURCE_FILES model/sionna-connection-handler.cc
                  helper/sionna-helper.cc
+
     HEADER_FILES model/sionna-connection-handler.h
                  helper/sionna-helper.h
+
     LIBRARIES_TO_LINK
 	             ${libcore}
                  ${libnetwork}
                  ${libmobility}
+                 ${libflow-monitor}
     TEST_SOURCES test/sionna-test-suite.cc
                  ${examples_as_tests_sources}
 )
-    

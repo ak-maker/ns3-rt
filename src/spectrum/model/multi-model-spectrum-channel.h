@@ -163,6 +163,8 @@ class MultiModelSpectrumChannel : public SpectrumChannel
      * Number of devices connected to the channel.
      */
     std::size_t m_numDevices;
+
+    Ptr<SpectrumPropagationLossModel> m_spectrumPropagationLoss;
 };
 
 } // namespace ns3

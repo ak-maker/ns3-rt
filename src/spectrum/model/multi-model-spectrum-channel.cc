@@ -102,6 +102,11 @@ MultiModelSpectrumChannel::GetTypeId()
                             .SetParent<SpectrumChannel>()
                             .SetGroupName("Spectrum")
                             .AddConstructor<MultiModelSpectrumChannel>()
+                            .AddAttribute("SpectrumPropagationLossModel",
+                            "A spectrum-level pathloss/fading model used in StartRx()",
+                            PointerValue(),
+                            MakePointerAccessor(&MultiModelSpectrumChannel::m_spectrumPropagationLoss),
+                            MakePointerChecker<SpectrumPropagationLossModel>())
 
         ;
     return tid;
@@ -399,6 +404,7 @@ void
 MultiModelSpectrumChannel::StartRx(Ptr<SpectrumSignalParameters> params, Ptr<SpectrumPhy> receiver)
 {
     NS_LOG_FUNCTION(this);
+//    std::cout<< "MultiModelSpectrumChannel::StartRx => About to call m_spectrumPropagationLoss->CalcRxPowerSpectralDensity()" << std::endl;
     if (m_spectrumPropagationLoss)
     {
         params->psd =

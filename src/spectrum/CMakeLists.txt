@@ -17,6 +17,7 @@ set(source_files
     model/multi-model-spectrum-channel.cc
     model/non-communicating-net-device.cc
     model/single-model-spectrum-channel.cc
+    model/sionna-lte-pathloss-model.cc
     model/spectrum-analyzer.cc
     model/spectrum-channel.cc
     model/spectrum-converter.cc
@@ -58,6 +59,7 @@ set(header_files
     model/multi-model-spectrum-channel.h
     model/non-communicating-net-device.h
     model/single-model-spectrum-channel.h
+    model/sionna-lte-pathloss-model.h
     model/spectrum-analyzer.h
     model/spectrum-channel.h
     model/spectrum-converter.h

@@ -24,6 +24,8 @@
 #include "spectrum-model.h"
 
 #include <ns3/traced-callback.h>
+#include "ns3/spectrum-propagation-loss-model.h" // 新增，用于指针声明
+#include "ns3/pointer.h" // 如果需要 PointerValue
 
 namespace ns3
 {
@@ -78,6 +80,7 @@ class SingleModelSpectrumChannel : public SpectrumChannel
      * SpectrumModel that this channel instance is supporting.
      */
     Ptr<const SpectrumModel> m_spectrumModel;
+    Ptr<SpectrumPropagationLossModel> m_spectrumPropagationLoss;
 };
 
 } // namespace ns3
