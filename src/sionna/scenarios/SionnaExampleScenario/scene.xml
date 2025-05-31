@@ -33,13 +33,69 @@
 		</bsdf>
 	</bsdf>
 
+
+<!-- ============ 摄像机：高空斜俯视，FOV 够大 ============ -->
+<sensor type="perspective">
+    <transform name="to_world">
+        <!-- 站到地图左下方 200 m 处，高 80 m，朝对角线看 -->
+        <lookat origin="-120, -200, 80"
+                target="30,   -50, 10"
+                up="0, 0, 1"/>
+    </transform>
+
+    <!-- 80° 比常见 45° 宽得多，能把 -90…140 × -70…-35 全包进画面 -->
+    <float name="fov" value="80"/>
+
+    <film type="hdrfilm">
+        <integer name="width"  value="1920"/>
+        <integer name="height" value="1080"/>
+        <string  name="file_format" value="openexr"/>
+    </film>
+</sensor>
+
+<!-- ============ 预览用采样器：512 spp 噪声可接受 ============ -->
+<sampler type="independent">
+    <integer name="sample_count" value="512"/>
+</sampler>
+
+
+<!-- 背景改成淡灰 + 加一盏太阳光 -->
+<emitter type="constant">
+    <rgb name="radiance" value="0.3 0.35 0.4"/>
+</emitter>
+
+<emitter type="directional">
+    <rgb name="irradiance" value="3 3 3"/>          <!-- 亮度自行微调 -->
+    <transform name="to_world">
+        <!-- 太阳从右前方 45° 打进来 -->
+        <lookat origin="1 1 1"
+                target="0 0 0"
+                up="0 0 1"/>
+    </transform>
+</emitter>
+
+
+
 <!-- Emitters -->
 
-	<emitter type="constant" id="World" name="World">
-		<rgb value="1.000000 0.002116 0.006070" name="radiance"/>
-	</emitter>
+<!--	<emitter type="constant" id="World" name="World">-->
+<!--		<rgb value="1.000000 0.002116 0.006070" name="radiance"/>-->
+<!--	</emitter>-->
+
+
 
 <!-- Shapes -->
+	<shape type="cube" id="wall-test">
+    <transform name="to_world">
+        <!-- 1) 先放大 unit-cube 到目标尺寸 -->
+        <scale      x="40" y="50"  z="15"/>
+        <!-- 2) 再平移到场景位置 (x=100, y=0, z=7.5) -->
+        <translate  x="100" y="0"  z="7.5"/>
+    </transform>
+    <!-- 使用已有 ITU brick 材料 -->
+    <ref id="mat-itu_brick" name="bsdf"/>
+	</shape>
+
 
 	<shape type="ply" id="mesh-Settore_didattico_Celoria-itu_brick" name="mesh-Settore_didattico_Celoria-itu_brick">
 		<string name="filename" value="meshes/Settore_didattico_Celoria-itu_brick.ply"/>

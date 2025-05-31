@@ -651,6 +651,11 @@ void
 LteSpectrumPhy::StartRxData(Ptr<LteSpectrumSignalParametersDataFrame> params)
 {
     NS_LOG_FUNCTION(this);
+    // NS_LOG_INFO ("t=" << Simulator::Now ().GetSeconds ()
+    //           << "s  UE(cellId=" << m_cellId
+    //           << ")  StartRxData  burstDuration="
+    //           << params->duration.As (Time::S));
+
     switch (m_state)
     {
     case TX_DATA:

@@ -64,6 +64,10 @@ SionnaLtePathlossModel::DoCalcRxPowerSpectralDensity(
   // 5) 将衰减乘到 PSD 上
   // 这样就得到了接收端功率谱密度（Rx PSD）。因为频谱中每个采样点（子载波或频率格）都要受到相同的路径损耗衰减，所以把每个分量都乘以 pathLossLin
   (*rxPsd) *= pathLossLin;
+  // NS_LOG_INFO ("t=" << Simulator::Now ().GetSeconds ()
+  //             << "  PL=" << pathLossDb << " dB  ("     // path loss
+  //             << txPos << " -> "
+  //             << rxPos << ")");
 
   return rxPsd;
 }

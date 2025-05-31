@@ -1,25 +1,27 @@
+// .vscode/tasks.json
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Build",
-            "type": "shell",
-            "command": "./ns3",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "Run tests",
-            "type": "shell",
-            "command": "./test.py",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            }
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    /* ---------- build the whole simulator ---------- */
+    {
+      "label": "ns3 build",
+      "type": "shell",
+      "command": "./ns3",
+      "args": [ "build" ],          // or "configure", "build", …
+      "options": {
+        "cwd": "${workspaceFolder}" // root folder where ./ns3 lives
+      },
+      "group": { "kind": "build", "isDefault": true }
+    },
+
+    /* ---------- run a particular example ---------- */
+    {
+  "label": "ns3 build simple-sionna-example",
+  "type":  "shell",
+  "command": "./ns3",
+  "args":   ["build", "ns3-dev-simple-sionna-example-debug"],
+  "options": { "cwd": "${workspaceFolder}" }
+}
+
+  ]
 }

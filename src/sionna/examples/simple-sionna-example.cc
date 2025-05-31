@@ -90,8 +90,9 @@ int main(int argc, char* argv[])
   mobilityUe.SetMobilityModel("ns3::ConstantPositionMobilityModel");
   mobilityUe.Install(ueNodes);
   ueNodes.Get(0)->GetObject<MobilityModel>()->SetPosition(Vector(200.0, 0.0, 1.5));
-  ueNodes.Get(1)->GetObject<MobilityModel>()->SetPosition(Vector(200.0, 10.0, 1.5));
-  ueNodes.Get(2)->GetObject<MobilityModel>()->SetPosition(Vector(200.0, -10.0, 1.5));
+  ueNodes.Get(1)->GetObject<MobilityModel>()->SetPosition(Vector(200.0, 200.0, 1.5));
+  ueNodes.Get(2)->GetObject<MobilityModel>()->SetPosition(Vector(200.0, -200.0, 1.5));
+
 
   // 5) 在UE装IP协议栈
   InternetStackHelper internet;
@@ -151,6 +152,27 @@ int main(int argc, char* argv[])
     SendLocUpdateToSionna(ueNodes.Get(i));
   }
 
+
+
+  /* ---------- 10.5)   UE-eNB PathLoss & LOS   ---------- */
+  {
+    Vector enbPos =
+    enbNodes.Get (0)->GetObject<MobilityModel>()->GetPosition ();
+
+    for (uint32_t u = 0; u < ueNodes.GetN (); ++u)
+    {
+      Vector uePos =  ueNodes.Get (u)->GetObject<MobilityModel>()->GetPosition ();
+     /* ① 会触发 compute_rays()，Sionna 得到路径 */
+      double pl  = getPathGainFromSionna (enbPos, uePos);       // dB
+     /* ② 直接询问 LOS 状态（"LOS" / "NLOS"） */
+      std::string los = getLOSStatusFromSionna (enbPos, uePos);
+
+      NS_LOG_UNCOND ("[InitCheck] UE" << u
+          << "   LOS=" << los
+          << "   PathLoss=" << pl << " dB");
+    }
+  }
+
   // 11) FlowMonitor
   FlowMonitorHelper flowmonHelper;
   Ptr<FlowMonitor> flowmon = flowmonHelper.InstallAll();
@@ -195,9 +217,6 @@ int main(int argc, char* argv[])
     }
     NS_LOG_UNCOND("  Throughput=" << throughputMbps << " Mbps\n");
   }
-
-  // (可选) 打印Sionna PathLoss
-  // 你也可像原来那样 getPathGainFromSionna( enbPos, uePos ) 做校验
 
   Simulator::Destroy();
   sionnaHelper.ShutdownSionna();
