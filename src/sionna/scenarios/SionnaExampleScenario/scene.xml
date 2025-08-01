@@ -96,62 +96,73 @@
     <ref id="mat-itu_brick" name="bsdf"/>
 	</shape>
 
+	<shape type="cube" id="wall-test1">
+    <transform name="to_world">
+        <!-- 1) 先放大 unit-cube 到目标尺寸 -->
+        <scale      x="50" y="25"  z="15"/>
+        <!-- 2) 再平移到场景位置 (x=100, y=0, z=7.5) -->
+        <translate  x="100" y="125"  z="15"/>
+    </transform>
+    <!-- 使用已有 ITU brick 材料 -->
+    <ref id="mat-itu_brick" name="bsdf"/>
+	</shape>
 
-	<shape type="ply" id="mesh-Settore_didattico_Celoria-itu_brick" name="mesh-Settore_didattico_Celoria-itu_brick">
-		<string name="filename" value="meshes/Settore_didattico_Celoria-itu_brick.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_brick" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Settore_didattico_Celoria-itu_metal" name="mesh-Settore_didattico_Celoria-itu_metal">
-		<string name="filename" value="meshes/Settore_didattico_Celoria-itu_metal.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_metal" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Settore_didattico_Venezian-itu_brick" name="mesh-Settore_didattico_Venezian-itu_brick">
-		<string name="filename" value="meshes/Settore_didattico_Venezian-itu_brick.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_brick" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Settore_didattico_Venezian-itu_metal" name="mesh-Settore_didattico_Venezian-itu_metal">
-		<string name="filename" value="meshes/Settore_didattico_Venezian-itu_metal.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_metal" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_brick" name="mesh-Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_brick">
-		<string name="filename" value="meshes/Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_brick.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_brick" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_metal" name="mesh-Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_metal">
-		<string name="filename" value="meshes/Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_metal.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_metal" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_concrete" name="mesh-Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_concrete">
-		<string name="filename" value="meshes/Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_concrete.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_concrete" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_metal" name="mesh-Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_metal">
-		<string name="filename" value="meshes/Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_metal.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_metal" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Zero_Gravity-itu_brick" name="mesh-Zero_Gravity-itu_brick">
-		<string name="filename" value="meshes/Zero_Gravity-itu_brick.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_brick" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Zero_Gravity-itu_metal" name="mesh-Zero_Gravity-itu_metal">
-		<string name="filename" value="meshes/Zero_Gravity-itu_metal.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_metal" name="bsdf"/>
-	</shape>
-	<shape type="ply" id="mesh-Plane" name="mesh-Plane">
-		<string name="filename" value="meshes/Plane.ply"/>
-		<boolean name="face_normals" value="true"/>
-		<ref id="mat-itu_concrete" name="bsdf"/>
-	</shape>
+
+<!--	<shape type="ply" id="mesh-Settore_didattico_Celoria-itu_brick" name="mesh-Settore_didattico_Celoria-itu_brick">-->
+<!--		<string name="filename" value="meshes/Settore_didattico_Celoria-itu_brick.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_brick" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Settore_didattico_Celoria-itu_metal" name="mesh-Settore_didattico_Celoria-itu_metal">-->
+<!--		<string name="filename" value="meshes/Settore_didattico_Celoria-itu_metal.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_metal" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Settore_didattico_Venezian-itu_brick" name="mesh-Settore_didattico_Venezian-itu_brick">-->
+<!--		<string name="filename" value="meshes/Settore_didattico_Venezian-itu_brick.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_brick" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Settore_didattico_Venezian-itu_metal" name="mesh-Settore_didattico_Venezian-itu_metal">-->
+<!--		<string name="filename" value="meshes/Settore_didattico_Venezian-itu_metal.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_metal" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_brick" name="mesh-Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_brick">-->
+<!--		<string name="filename" value="meshes/Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_brick.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_brick" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_metal" name="mesh-Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_metal">-->
+<!--		<string name="filename" value="meshes/Scuola_Secondaria_di_Primo_Grado_‘A__Bono_Cairoli’-itu_metal.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_metal" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_concrete" name="mesh-Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_concrete">-->
+<!--		<string name="filename" value="meshes/Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_concrete.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_concrete" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_metal" name="mesh-Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_metal">-->
+<!--		<string name="filename" value="meshes/Laboratorio_getti_molecolari_e_materiali_nanocristallini-itu_metal.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_metal" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Zero_Gravity-itu_brick" name="mesh-Zero_Gravity-itu_brick">-->
+<!--		<string name="filename" value="meshes/Zero_Gravity-itu_brick.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_brick" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Zero_Gravity-itu_metal" name="mesh-Zero_Gravity-itu_metal">-->
+<!--		<string name="filename" value="meshes/Zero_Gravity-itu_metal.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_metal" name="bsdf"/>-->
+<!--	</shape>-->
+<!--	<shape type="ply" id="mesh-Plane" name="mesh-Plane">-->
+<!--		<string name="filename" value="meshes/Plane.ply"/>-->
+<!--		<boolean name="face_normals" value="true"/>-->
+<!--		<ref id="mat-itu_concrete" name="bsdf"/>-->
+<!--	</shape>-->
 	<shape type="ply" id="mesh-car_1" name="mesh-car_1">
 		<string name="filename" value="meshes/car_1.ply"/>
 		<boolean name="face_normals" value="true"/>
