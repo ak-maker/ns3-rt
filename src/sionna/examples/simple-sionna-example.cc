@@ -32,7 +32,7 @@ SendLocUpdateToSionna(Ptr<Node> node)
 
 int main(int argc, char* argv[])
 {
-  double txPower = 30;    // dBm
+  double txPower = 0;    // dBm
   uint16_t earfcn = 100; // LTE频点(对应2.1GHz左右)
   bool sionna = true;
   std::string server_ip = "127.0.0.1";
