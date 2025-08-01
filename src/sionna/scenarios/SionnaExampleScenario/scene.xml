@@ -93,7 +93,7 @@
         <translate  x="100" y="0"  z="7.5"/>
     </transform>
     <!-- 使用已有 ITU brick 材料 -->
-    <ref id="mat-itu_brick" name="bsdf"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
 	</shape>
 
 	<shape type="cube" id="wall-test1">
@@ -104,7 +104,7 @@
         <translate  x="100" y="125"  z="15"/>
     </transform>
     <!-- 使用已有 ITU brick 材料 -->
-    <ref id="mat-itu_brick" name="bsdf"/>
+    <ref id="mat-itu_concrete" name="bsdf"/>
 	</shape>
 
 
